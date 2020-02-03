@@ -2,11 +2,11 @@ package uk.grivell.primes.dto;
 
 import java.util.List;
 
-public class PrimeResult {
+public class PrimesResult {
     Integer initial;
     List<Integer> primes;
 
-    public PrimeResult(int initial, List<Integer> primes) {
+    public PrimesResult(int initial, List<Integer> primes) {
         this.initial = initial;
         this.primes = primes;
     }

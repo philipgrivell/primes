@@ -1,7 +1,7 @@
 package uk.grivell.primes;
 
 import org.springframework.stereotype.Component;
-import uk.grivell.primes.dto.PrimeResult;
+import uk.grivell.primes.dto.PrimesResult;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,14 +9,14 @@ import java.util.List;
 @Component
 public class PrimesGenerator {
 
-    public PrimeResult generate(int initial) {
+    public PrimesResult generate(int initial) {
         List<Integer> results = new ArrayList<>();
         for(int l = 2; l <= initial; l++) {
             if (isPrime(l)) {
                 results.add(l);
             }
         }
-        return new PrimeResult(initial, results);
+        return new PrimesResult(initial, results);
     }
 
     private boolean isPrime(int primeCandidate) {

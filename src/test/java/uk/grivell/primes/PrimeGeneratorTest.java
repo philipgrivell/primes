@@ -2,7 +2,7 @@ package uk.grivell.primes;
 
 
 import org.junit.jupiter.api.Test;
-import uk.grivell.primes.dto.PrimeResult;
+import uk.grivell.primes.dto.PrimesResult;
 
 import java.util.Arrays;
 import java.util.List;
@@ -16,7 +16,7 @@ public class PrimeGeneratorTest {
     @Test
     public void testPrimes() {
         BiConsumer<Integer, List<Integer>> test = (in, expected) -> {
-            PrimeResult result = primesGenerator.generate(in);
+            PrimesResult result = primesGenerator.generate(in);
             assertEquals(expected, result.getPrimes());
         };
 

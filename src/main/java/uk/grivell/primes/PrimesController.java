@@ -4,7 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import uk.grivell.primes.dto.PrimeResult;
+import uk.grivell.primes.dto.PrimesResult;
 
 import javax.annotation.Resource;
 
@@ -18,7 +18,7 @@ public class PrimesController {
 
     @GetMapping("/primes/{initial}")
     @ResponseBody
-    public PrimeResult generatePrimes(@PathVariable("initial") String initial) {
+    public PrimesResult generatePrimes(@PathVariable("initial") String initial) {
         logger.info("Processing prime request with initial: " + initial);
         int initialValue = Integer.parseInt(initial);
         return primesGenerator.generate(initialValue);
