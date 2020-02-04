@@ -1,0 +1,16 @@
+## Prime Number Generator Rest Service
+
+Can be run locally using PrimeApplication.main
+
+Can deployed to Cloud Foundry using the following command:
+
+`cf push your-appname -p target/primes-0.0.1-SNAPSHOT.jar -b https://github.com/cloudfoundry/java-buildpack.git
+`
+
+### Usage
+Service will generate a list of primes up to a the value specified in a GET request: http://host/primes/value
+
+You can add the http header "Accept" with value "application/xml" to return xml.
+
+### Limitations
+Accept http header does not work when deployed to CloudFoundry.
