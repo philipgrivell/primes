@@ -12,5 +12,7 @@ Service will generate a list of primes up to a the value specified in a GET requ
 
 You can add the http header "Accept" with value "application/xml" to return xml.
 
+You can also add the param algorithm using either "standard" (check primes using division) or "sieve" (using the Sieve of Eratosthenes algorithm). If not specified the standard algorithm is used.
+
 ### Limitations
 Accept http header does not work when deployed to CloudFoundry.

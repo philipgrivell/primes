@@ -1,4 +1,4 @@
-package uk.grivell.primes;
+package uk.grivell.primes.generator;
 
 import org.springframework.stereotype.Component;
 import uk.grivell.primes.dto.PrimesResult;
@@ -9,9 +9,15 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Component
-public class PrimesGenerator {
+public class PrimesGeneratorStd implements PrimesGenerator {
     protected List<Integer> primesCache = new ArrayList<>(Collections.singletonList(2));
 
+    @Override
+    public String getAlgorithm() {
+        return "standard";
+    }
+
+    @Override
     public PrimesResult generate(int initial) {
         // Use the cache to get primes generated previously
         List<Integer> results =  primesCache.stream().filter(i -> i <= initial).collect(Collectors.toList());
@@ -26,7 +32,7 @@ public class PrimesGenerator {
                 primesCache.add(i);
             }
         }
-        return new PrimesResult(initial, results);
+        return new PrimesResult(getAlgorithm(), initial, results);
     }
 
     private boolean isPrime(int primeCandidate) {

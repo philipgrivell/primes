@@ -1,4 +1,4 @@
-package uk.grivell.primes;
+package uk.grivell.primes.generator;
 
 
 import org.junit.jupiter.api.Test;
@@ -11,10 +11,21 @@ import java.util.function.BiConsumer;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class PrimeGeneratorTest {
-    PrimesGenerator primesGenerator = new PrimesGenerator();
 
     @Test
-    public void testPrimes() {
+    public void testPrimesStd() {
+        PrimesGeneratorStd generatorStd = new PrimesGeneratorStd();
+        testPrimes(generatorStd);
+        assertEquals(15, generatorStd.primesCache.size());
+
+    }
+
+    @Test
+    public void testPrimesSieve() {
+        testPrimes(new PrimesGeneratorSieve());
+    }
+
+    private void testPrimes(PrimesGenerator primesGenerator) {
         BiConsumer<Integer, List<Integer>> test = (in, expected) -> {
             PrimesResult result = primesGenerator.generate(in);
             assertEquals(expected, result.getPrimes());
@@ -24,7 +35,7 @@ public class PrimeGeneratorTest {
         test.accept(1, Arrays.asList());
         test.accept(2, Arrays.asList(2));
         test.accept(10, Arrays.asList(2, 3, 5, 7));
-        test.accept(50, Arrays.asList(2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47));
-        assertEquals(15, primesGenerator.primesCache.size());
+        test.accept(16, Arrays.asList(2, 3, 5, 7, 11, 13));
+        test.accept(49, Arrays.asList(2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47));
     }
 }
